@@ -1,0 +1,117 @@
+:root {
+  --bg: #fbf7f0;
+  --card: #fffdf9;
+  --line: #efe4d6;
+  --sel: #f6e3d8;
+  --selline: #e2b9a5;
+  --text: #4a3a31;
+  --sub: #9a8678;
+  --acc: #b85c40;
+  --accfg: #fff;
+  --chip: #efe6da;
+  --chipg: #e6ecdd;
+  --ai: #f1e6d9;
+  --ring: #f1e3d4;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1c1713;
+    --card: #271f1a;
+    --line: #3a2f27;
+    --sel: #3b2a22;
+    --selline: #7a4b39;
+    --text: #f3ebe2;
+    --sub: #a8978a;
+    --acc: #d9805f;
+    --accfg: #1c1713;
+    --chip: #352b24;
+    --chipg: #2d3427;
+    --ai: #2f2620;
+    --ring: #3a2f27;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1c1713;
+  --card: #271f1a;
+  --line: #3a2f27;
+  --sel: #3b2a22;
+  --selline: #7a4b39;
+  --text: #f3ebe2;
+  --sub: #a8978a;
+  --acc: #d9805f;
+  --accfg: #1c1713;
+  --chip: #352b24;
+  --chipg: #2d3427;
+  --ai: #2f2620;
+  --ring: #3a2f27;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--text); font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif; }
+main { max-width: 430px; margin: 0 auto; padding: 18px 20px 28px; }
+h1 { font-size: 24px; margin: 0; font-weight: 700; }
+.sub { font-size: 11px; color: var(--sub); margin: 2px 0 0; }
+header { display: flex; justify-content: space-between; align-items: flex-start; }
+.timer { display: flex; flex-direction: column; align-items: center; margin: 14px 0 12px; }
+.ring { position: relative; width: min(68vw, 270px); aspect-ratio: 1; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring .t { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: clamp(44px, 15vw, 60px); font-weight: 500; font-variant-numeric: tabular-nums; letter-spacing: .02em; }
+.now { text-align: center; margin-top: 10px; }
+.now b { font-size: 20px; }
+.now div { font-size: 12px; color: var(--sub); margin-top: 2px; }
+.btns { display: flex; gap: 10px; margin: 14px 0 20px; }
+button { font-family: inherit; cursor: pointer; border: 0; color: inherit; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--acc); outline-offset: 2px; }
+.go { flex: 1; height: 52px; border-radius: 26px; background: var(--acc); color: var(--accfg); font-size: 15px; font-weight: 700; }
+.go:disabled { cursor: default; }
+.rs { width: 52px; height: 52px; border-radius: 50%; background: var(--chip); font-size: 20px; }
+h2 { font-size: 17px; margin: 0; }
+.lh { display: flex; justify-content: space-between; align-items: baseline; }
+.lh span { font-size: 11px; color: var(--sub); }
+ul { list-style: none; margin: 12px 0; padding: 0; display: grid; gap: 9px; }
+li { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 13px 14px; cursor: pointer; }
+li.sel { background: var(--sel); border-color: var(--selline); }
+li.done { opacity: .5; }
+li.done .nm { text-decoration: line-through; }
+.ck { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--sub); background: none; flex: none; position: relative; }
+li.done .ck { background: var(--acc); border-color: var(--acc); }
+li.done .ck::after { content: ""; position: absolute; left: 6px; top: 2px; width: 6px; height: 11px; border: solid var(--accfg); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.tx { flex: 1; min-width: 0; }
+.nm { font-weight: 700; font-size: 15px; }
+.chip { background: var(--chip); border-radius: 14px; padding: 7px 16px; font-size: 13px; font-weight: 500; }
+.chip.p { background: var(--chipg); }
+.x { background: none; color: var(--sub); font-size: 18px; padding: 4px 6px; }
+.add { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+.add input[type="text"] { flex: 1 1 100%; border: 0; border-bottom: 1px solid var(--line); background: none; color: var(--text); font: inherit; font-size: 14px; padding: 10px 2px; }
+.add input[type="number"] { width: 62px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); color: var(--text); text-align: center; font: inherit; font-size: 16px; }
+.seg { display: flex; flex: 1; background: var(--chip); border-radius: 12px; padding: 3px; }
+.seg button { flex: 1; border-radius: 10px; background: none; font-size: 14px; color: var(--sub); }
+.seg button.on { background: var(--card); color: var(--acc); font-weight: 700; }
+.plus { height: 46px; padding: 0 20px; border-radius: 14px; background: var(--acc); color: var(--accfg); font-weight: 700; font-size: 14px; }
+.ai { margin-top: 18px; background: var(--ai); border-radius: 20px; padding: 16px; }
+.ai h3 { margin: 0; font-size: 16px; }
+.ai p { margin: 2px 0 10px; font-size: 11px; color: var(--sub); }
+.ai textarea { width: 100%; height: 76px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); color: var(--text); font: inherit; font-size: 14px; padding: 12px; resize: none; }
+.ai .go { width: 100%; margin-top: 10px; height: 48px; }
+#msg { font-size: 12px; color: var(--sub); text-align: center; margin: 8px 0 0; min-height: 1.4em; }
+.proposal { margin-top: 14px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.proposal h3 { margin: 0; font-size: 15px; }
+.proposal > p { font-size: 13px; margin: 8px 0; }
+.proposal-list, .questions ul { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 8px; }
+.proposal-list li { display: grid; gap: 2px; padding: 10px; cursor: default; }
+.proposal-list li strong { font-size: 13px; }
+.proposal-list li span { color: var(--sub); font-size: 11px; }
+.questions { padding: 10px; border-radius: 12px; background: var(--ai); font-size: 12px; }
+.questions ul { margin-bottom: 0; }
+.questions li { display: block; padding: 0; border: 0; background: transparent; font-size: 12px; }
+.proposal-actions { display: grid; gap: 8px; margin-top: 12px; }
+.proposal-actions .plus { min-height: 44px; height: auto; padding: 10px 14px; }
+.proposal-actions .plus:disabled { opacity: .5; cursor: not-allowed; }
+.dismiss { padding: 9px; border-radius: 12px; background: var(--chip); }
